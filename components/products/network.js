@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router();
-const response = require('respuestita')
+const response = require('../../middleware/response.handler')
 const controller = require('./controller')
 
 //utilizo el response aprendido de el proyecto backendNode & utilizo el next aprendido backendPostgre
 
-router.get('/', 
+router.get('/',
     async(req,res,next) => {
         try {
             const productsList = await controller.getProducts()
