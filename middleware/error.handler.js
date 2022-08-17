@@ -1,4 +1,3 @@
-const response = require('./response.handler')
 
 function logErrors(err,req,res,next) {
   console.log('logErrors');
@@ -8,7 +7,11 @@ function logErrors(err,req,res,next) {
 
 function errorHandler(err,req,res,next) {
   console.log('errorHandler');
-  response
-}
+  res.status(500).send({
+    message: err.message,
+    stack: err.stack,
+    body: '',
+  })
 
+}
 module.exports = {logErrors, errorHandler}

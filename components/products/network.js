@@ -3,15 +3,17 @@ const router = express.Router();
 const response = require('../../middleware/response.handler')
 const controller = require('./controller')
 
-//utilizo el response aprendido de el proyecto backendNode & utilizo el next aprendido backendPostgre
+
 
 router.get('/',
     async(req,res,next) => {
         try {
-            const productsList = await controller.getProducts()
+            const productsList = -1
+            await controller.getProducts() //esto dara error
             response.success(req,res,productsList,200)
-        } catch(err) {
-            next(err)
+
+        } catch (error) {
+            next(error)
         }
 })
 

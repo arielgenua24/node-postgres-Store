@@ -7,12 +7,4 @@ function sucess(req,res,message,status) {
 
 }
 
-function error(req,res,message,status,details) {
-  console.error('[response error] ' + details)
-  res.status(status || 500).send({
-    error: message,
-    body: '',
-  })
-}
-
-module.exports = {sucess, error};
+module.exports = {sucess};
