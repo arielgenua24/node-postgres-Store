@@ -1,10 +1,11 @@
 
-function sucess(req,res,message,status) {
+function success(req,res,detail,status,message) {
   res.status(status || 200).send({
     error: '',
-    body: message
+    message: message,
+    body: detail
   })
 
 }
 
-module.exports = {sucess};
+module.exports = success;
