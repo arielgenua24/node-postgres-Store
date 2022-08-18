@@ -9,7 +9,7 @@ const CONTROLLER = new ProductsService()
 router.get('/',
     async(req,res,next) => {
         try {
-            const products = await CONTROLLER.getProducts() //esto dara error
+            const products = await CONTROLLER.find() //esto dara error
             success(req,res,products,200,'')
         } catch (error) {
             next(error)
@@ -21,7 +21,7 @@ router.get('/:id',
     async(req,res,next) => {
         try {
             const { id } = req.params;
-            const product = await CONTROLLER.getProducts(id) //esto dara error
+            const product = await CONTROLLER.findOne(id) //esto dara error
             success(req,res,product,200,'')
         } catch (error) {
             next(error)

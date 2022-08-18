@@ -11,13 +11,24 @@ class ProductsService {
 
 
   async find() {
-    const products = await models.Product.findAll(options);
-    return products
+    //const products = await models.Product.findAll(options);
+    const products = -1;
+    if(products === -1) {
+      throw boom.notFound('Product not found');
+    } else {
+      return products
+    }
+
   }
 
   async findOne(options) {
     const product = await models.Product.findAll(options);
-    return product
+    if(!product) {
+      throw boom.notFound('Product not found');
+    } else {
+      return product
+    }
+
   }
 
 

@@ -8,8 +8,8 @@ app.use(express.json())
 routerApi(app)
 
 app.use(logErrors)
-app.use(errorHandler)
 app.use(boomErrorHandler)
+app.use(errorHandler)
 
 
 
