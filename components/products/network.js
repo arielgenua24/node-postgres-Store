@@ -8,7 +8,7 @@ const CONTROLLER = new ProductsService()
 
 
 
-
+//no utilizamos validtor hanlder aca porque el usuario no utilizara ningun dato.
 router.get('/',
     async(req,res,next) => {
         try {
@@ -21,7 +21,7 @@ router.get('/',
 
 
 router.get('/:id',
-
+    validatorHandler(getProductSchema, 'params'),
     async(req,res,next) => {
         try {
             const { id } = req.params;
@@ -33,6 +33,7 @@ router.get('/:id',
 })
 
 router.post('/',
+    validatorHandler(createProductSchema,'body'),
     async(req,res,next) => {
         try {
             const body  = req.body;
@@ -44,6 +45,8 @@ router.post('/',
 })
 
 router.patch('/:id',
+    validatorHandler(updateProductSchema, 'params'),
+    validatorHandler(updateProductSchema, 'body'),
     async(req,res,next) => {
         try {
             const { id }  = req.params;
