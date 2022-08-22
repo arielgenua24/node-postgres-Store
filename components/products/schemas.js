@@ -19,10 +19,9 @@ const price_max = Joi.number().integer();
 const createProductSchema = Joi.object({
   name: name.required(),
   price: price.required(),
-  value: value.required(),
   image: image.required(),
   description: description.required(),
-  categoryId: categoryId.required()
+  //categoryId: categoryId.required()
 })
 
 const updateProductSchema = Joi.object({

@@ -5,8 +5,10 @@ class ProductsService {
   }
 
   async create(data) {
-    const products = await models.Product.create(data)
-    return products
+    //const products = await models.Product.create(data)
+    //return products
+    const product = data;
+    return product;
   }
 
 
