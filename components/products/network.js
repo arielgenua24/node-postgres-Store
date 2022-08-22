@@ -1,8 +1,11 @@
 const express = require('express')
 const router = express.Router();
 const success = require('../../middleware/response.handler')
+const validatorHandler = require('../../middleware/validator.handler')
+const {createProductSchema, updateProductSchema, getProductSchema, queryProductSchema} = require('./schemas')
 const ProductsService = require('./controller')
 const CONTROLLER = new ProductsService()
+
 
 
 
@@ -18,6 +21,7 @@ router.get('/',
 
 
 router.get('/:id',
+
     async(req,res,next) => {
         try {
             const { id } = req.params;
