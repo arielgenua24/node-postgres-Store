@@ -1,7 +1,11 @@
 const boom = require('@hapi/boom')
+const pool = require('../../libraries/postgres.pool')
+
 
 class ProductsService {
   constructor(){
+    this.pool = pool;
+    this.pool.on('error', (err) => console.error(err));
   }
 
   async create(data) {
@@ -14,12 +18,16 @@ class ProductsService {
 
   async find() {
     //const products = await models.Product.findAll(options);
-    const products = -1;
+    /*const products = -1;
     if(products === -1) {
       throw boom.notFound('Product not found');
     } else {
       return products
-    }
+    } */
+
+    const query = 'SELECT * FROM tasks'
+    const rta = await this.pool.query(query);
+    return rta.rows; //2) Accedemos a pool y especifcamente le passamos el query que este metodo necesita
 
   }
 

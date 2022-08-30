@@ -1,11 +1,12 @@
-const { Pool } = require('pg')
-const { config } = require('../config')
+const { Pool } = require('pg');
 
-const USER = encodeURIComponent(config.dbUser)
-const PASSWORD = encodeURIComponent(config.dbPassword)
+const { config } = require('../config');
 
-const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
 
-const pool = new Pool({ connectionString: URI })
+const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
+
+const pool = new Pool({ connectionString: URI });
 
 module.exports = pool;
