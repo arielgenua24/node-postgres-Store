@@ -1,5 +1,6 @@
 const boom = require('@hapi/boom')
 const pool = require('../../libraries/postgres.pool')
+const sequelize = require('../../libraries/sequelize')
 
 
 class ProductsService {
@@ -26,8 +27,8 @@ class ProductsService {
     } */
 
     const query = 'SELECT * FROM tasks'
-    const rta = await this.pool.query(query);
-    return rta.rows; //2) Accedemos a pool y especifcamente le passamos el query que este metodo necesita
+    const [data, medadata] = await sequelize.query(query);
+    return data; //2) Accedemos a pool y especifcamente le passamos el query que este metodo necesita
 
   }
 
