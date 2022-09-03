@@ -3,8 +3,8 @@ const router = express.Router()
 const success = require('../../middleware/response.handler')
 const validatorHandler = require('../../middleware/validator.handler')
 const {createCategorySchema, updateCategorySchema, getCategorySchema} = require('./schemas')
-const ProductsService = require('./controller')
-const CONTROLLER = new ProductsService()
+const CategoriesService = require('./controller')
+const CONTROLLER = new CategoriesService()
 
 
 router.get('/', async(req,res,next) => {
