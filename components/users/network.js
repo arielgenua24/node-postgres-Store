@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const success = require('../../middleware/response.handler')
 const validatorHandler = require('../../middleware/validator.handler')
-const { getUserSchema, createUserSchema, updateUserSchema, deleteUserSchema } = require('./schemas')
+const { getUserSchema, createUserSchema, updateUserSchema } = require('./schemas')
 const UsersServices = require('./controller')
 const CONTROLLER = new UsersServices()
 

@@ -1,10 +1,15 @@
+const boom = require('@hapi/boom');
+
+const { models } = require('./../libs/sequelize')
+
+
 class UsersServices {
   constructor() {
       
   }  
 
-  get() {
-
+  async find() {
+    //const users = await models.
   }
 
 
