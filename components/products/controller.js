@@ -5,8 +5,6 @@ const sequelize = require('../../libraries/sequelize')
 
 class ProductsService {
   constructor(){
-    this.pool = pool;
-    this.pool.on('error', (err) => console.error(err));
   }
 
   async create(data) {
@@ -33,13 +31,7 @@ class ProductsService {
   }
 
   async findOne(options) {
-    const product = await models.Product.findAll(options);
-    if(!product) {
-      throw boom.notFound('Product not found');
-    } else {
-      return product
-    }
-
+   
   }
 
 

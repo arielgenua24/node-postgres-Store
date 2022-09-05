@@ -1,4 +1,4 @@
-/*const express = require('express')
+const express = require('express')
 const router = express.Router()
 const success = require('../../middleware/response.handler')
 const validatorHandler = require('../../middleware/validator.handler')
@@ -68,4 +68,4 @@ router.delete('/id',
 })
 
 
-module.exports = router; */
+module.exports = router; 
