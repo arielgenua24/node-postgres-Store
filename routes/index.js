@@ -7,7 +7,7 @@ const customers = require('../components/customers/network')
 
 function routerApi(app) {
   app.use('/api/v1/products', products)
-  app.use('/api/v1/categories', categories)
+  //app.use('/api/v1/categories', categories)
   app.use('/api/v1/users', users)
   app.use('/api/v1/customers', customers)
 
