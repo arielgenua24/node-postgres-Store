@@ -1,6 +1,7 @@
 'use strict';
 
 const { ProductSchema, PRODUCT_TABLE } = require('./../models/products.model')
+const { CategorySchema, CATEGORY_TABLE} = require('./../models/categories.model')
 
 
 module.exports = {

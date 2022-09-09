@@ -16,7 +16,7 @@ router.get('/', async(req,res,next) => {
     }
 })
 
-router.get('/id',   
+router.get('/:id',   
     validatorHandler(getCategorySchema, 'params'),
     async(req,res,next) => {
         try {
@@ -32,22 +32,22 @@ router.post('/',
     validatorHandler(createCategorySchema, 'body'),
     async(req,res,next) => {
         try {
-            const { id } = req.params;
-            const categories = await CONTROLLER.create()
+            const body = req.body
+            const categories = await CONTROLLER.create(body)
             success(req,res,categories,201,'')
         } catch (error){
             next(error)
         }
 })
 
-router.patch('/id',   
+router.patch('/:id',   
     validatorHandler(getCategorySchema, 'params'),
     validatorHandler(updateCategorySchema, 'body'),
     async(req,res,next) => {
         try {
             const { id } = req.params;
             const  body  = req.body;
-            const categories = await CONTROLLER.update()
+            const categories = await CONTROLLER.update(id, body)
             success(req,res,categories,200,'')
         } catch (error){
             next(error)

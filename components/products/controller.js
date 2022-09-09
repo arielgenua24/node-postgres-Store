@@ -1,37 +1,28 @@
 const boom = require('@hapi/boom')
-const pool = require('../../libraries/postgres.pool')
-const sequelize = require('../../libraries/sequelize')
-
+const { models } = require('../../libraries/sequelize')
 
 class ProductsService {
   constructor(){
   }
 
   async create(data) {
-    //const products = await models.Product.create(data)
-    //return products
-    const product = data;
-    return product;
+    const product = await models.Product.create(data)
+    return product
+    
   }
 
 
   async find() {
-    //const products = await models.Product.findAll(options);
-    /*const products = -1;
-    if(products === -1) {
-      throw boom.notFound('Product not found');
-    } else {
-      return products
-    } */
-
-    const query = 'SELECT * FROM tasks'
-    const [data, medadata] = await sequelize.query(query);
-    return data; //2) Accedemos a pool y especifcamente le passamos el query que este metodo necesita
+    const products = await models.Product.findAll();
+    return products
 
   }
 
-  async findOne(options) {
-   
+  async findOne(id) {
+    const product = await models.Product.findByPk(id, {
+      include: ['category']
+    });
+    return product
   }
 
 
@@ -47,10 +38,9 @@ class ProductsService {
 
 
   async delete(id) {
-    const index = this.products.findIndex(product => product.id = id)
-    if(index === -1) {
-      throw boom.notFound('Product nor found');
-    }
+    const product = await this.findOne(id)
+    const deleted = await product.delete()
+    return deleted
   }
 }
 
