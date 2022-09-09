@@ -31,7 +31,7 @@ class ProductsService {
     if(!product) {
       throw boom.notFound('Product not found');
     } else {
-      const updated = await models.Product.update(changes)
+      const updated = await product.update(changes)
       return updated;
     }
   }

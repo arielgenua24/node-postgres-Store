@@ -45,13 +45,13 @@ router.post('/',
 })
 
 router.patch('/:id',
-    validatorHandler(updateProductSchema, 'params'),
+    validatorHandler(getProductSchema, 'params'),
     validatorHandler(updateProductSchema, 'body'),
     async(req,res,next) => {
         try {
             const { id }  = req.params;
             const body = req.body;
-            const product = await controller.update(id,body)
+            const product = await CONTROLLER.update(id,body)
             success(req,res,product,200,'Updated')
         } catch (error) {
             next(error)

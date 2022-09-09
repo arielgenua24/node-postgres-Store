@@ -6,7 +6,6 @@ const price = Joi.number().integer().min(10);
 const description = Joi.string().min(10)
 const image = Joi.string().uri();
 const categoryId = Joi.number().integer();
-const value = Joi.number().integer().min(10);
 
 
 const limit = Joi.number().integer();
