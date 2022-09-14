@@ -1,21 +1,17 @@
 'use strict';
 
+const {  ORDER_TABLE, OrderSchema } = require('./../models/order.model');
+
+
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
+  up: async (queryInterface) => {
+    await queryInterface.createTable(ORDER_TABLE, OrderSchema)
+
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+
+  down: async (queryInterface) => {
+    await queryInterface.dropTable(ORDER_TABLE);
+
   }
 };
