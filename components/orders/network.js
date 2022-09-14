@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const success = require('../../middleware/response.handler')
 const validatorHandler = require('../../middleware/validator.handler')
-const {getOrderSchema, createOrderSchema} = require('./schemas')
+const {getOrderSchema, createOrderSchema, addItemSchema} = require('./schemas')
 const OrderService = require('./controller')
 const CONTROLLER = new OrderService()
 
@@ -36,7 +36,7 @@ router.get('/', async (req, res, next) => {
       try {
         const body = req.body;
         const newOrder = await CONTROLLER.create(body);
-        res.status(201).json(newOrder);
+        success(req,res,newOrder,'201','')
       } catch (error) {
         next(error);
       }
@@ -49,7 +49,7 @@ router.get('/', async (req, res, next) => {
       try {
         const body = req.body;
         const newItem = await CONTROLLER.addItem(body);
-        res.status(201).json(newItem);
+        success(req,res,newItem,'201','')
       } catch (error) {
         next(error);
       }

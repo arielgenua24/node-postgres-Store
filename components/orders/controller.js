@@ -1,7 +1,7 @@
 //order.service.js
 const boom = require('@hapi/boom');
 
-const { models } = require('./../libs/sequelize')
+const { models } = require('../../libraries/sequelize')
 
 //6) Creamos los servicios
 
@@ -21,7 +21,7 @@ class OrderService {
 
   async find() {
     const orders = await models.Order.findAll({
-      include: ['costumer']
+      include: ['customer']
     })
     return orders;
   }
@@ -30,8 +30,11 @@ class OrderService {
     const order = await models.Order.findByPk(id, {
       include: [
         {
-          association: 'costumer',
+          association: 'customer',
           include: ['user']
+        },
+        {
+          association: 'items'
         }
       ]
     })//8) Queremos ir mas alla, es decir, cuando hacer una get a order, gracias a la columan costumerId y la asosiciaion con user, nosotros traemos una la columan de costumer, pero mmm sabemos que costumer esta asociado a user,etnoces, por que no asociarlos tambien? esto se hace como lo ves en el codigo de aca arriba. Lo que estamos haceindo es detallar mas asociaiones. el assocaition es la asociacion de order con costumer e include ['user '] es la asociaicon de costumer con user. yy todo se ve con hacer un simple request asi http://localhost:3001/api/v1/orders/2
