@@ -1,4 +1,5 @@
 const Joi = require('joi')
+const { Op } = require('sequelize')
 
 const id = Joi.number().integer();
 const name = Joi.string().min(3).max(15);

@@ -10,9 +10,10 @@ const CONTROLLER = new ProductsService()
 
 //no utilizamos validtor hanlder aca porque el usuario no utilizara ningun dato.
 router.get('/',
+    validatorHandler(queryProductSchema, 'query'),
     async(req,res,next) => {
         try {
-            const products = await CONTROLLER.find() //esto dara error
+            const products = await CONTROLLER.find(req.query) //esto dara error
             success(req,res,products,200,'')
         } catch (error) {
             next(error)
